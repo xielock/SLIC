@@ -3,7 +3,7 @@
  * @Author: xielock
  * @Date: 2022-01-11 19:19:47
  * @LastEditors: xie
- * @LastEditTime: 2022-01-11 19:59:30
+ * @LastEditTime: 2022-01-11 20:32:22
  */
 #include"slic.hpp"
 
@@ -17,13 +17,12 @@ int main()
 	cv::Mat labelMask;
 	int len = 25;
 	int m = 10;
-
-	SLIC slic(imagePath, labelMask, len, m);
-
-	for(int i = 0; i< 100; i++)
+	
+	SLIC slic; // 不再通过构造函数传递参数  
+	for(int i = 0; i< 50; i++)
 	{
-	SLIC slic(imagePath, labelMask, len, m);
-	slic.SLIC_demo();
+	slic.SLIC_demo(imagePath, labelMask, len, m);
+	slic.clear();
 	}
 	double end = cv::getTickCount();
 	double dura = (end - start)/cv::getTickFrequency();

@@ -3,19 +3,25 @@
  * @Author: xielock
  * @Date: 2022-01-11 18:42:13
  * @LastEditors: xie
- * @LastEditTime: 2022-01-11 19:39:25
+ * @LastEditTime: 2022-01-11 20:31:21
  */
 #include<slic.hpp>
 
 using namespace cv;
 using namespace std;
 
-void SLIC::SLIC_demo()
+void SLIC::SLIC_demo(const std::string & imagePath, cv:: Mat& labelMask, int len,  int m)
 {
+    this->imagePath = imagePath;
+    this->labelMask = labelMask;
+    this->len = len;
+    this->m = m;
 	srcImage = imread(imagePath);
+
+
 	SLIC_Init();
-	// showSLICResult();
-	// showSLICResult2();
+	//showSLICResult();
+	//showSLICResult2();
 
 }
 
@@ -304,5 +310,12 @@ void SLIC::showSLICResult2()
 	}
 	cv::namedWindow("showSLIC2", 0);
 	cv::imshow("showSLIC2", dst);
+	// imwrite(imagePath+ to_string(1) + ".jpg", dst);
 	cv::waitKey(1);
+}
+
+
+void SLIC::clear()
+{
+	centers.clear();
 }

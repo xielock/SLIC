@@ -3,7 +3,7 @@
  * @Author: xielock
  * @Date: 2022-01-11 16:33:22
  * @LastEditors: xie
- * @LastEditTime: 2022-01-11 19:27:31
+ * @LastEditTime: 2022-01-11 20:25:33
  */
 #include<iostream>
 #include "opencv2/opencv.hpp"
@@ -34,18 +34,9 @@ class SLIC{
     int m;   //a parameter which adjust the weights of spacial distance and the color space distance;
 
     public:
-    SLIC(std::string & imagePath, cv:: Mat& labelMask, int len,  int m)
-    {
-        //赋值
-        this->imagePath = imagePath;
-        this->labelMask = labelMask;
-        this->len = len;
-        this->m = m;
-        SLIC_demo();
-
-    }
+    SLIC(){}
     ~SLIC(){}
-    void SLIC_demo();
+    void SLIC_demo(const std::string & imagePath, cv:: Mat& labelMask, int len,  int m);
     int  SLIC_Init();
     void initilizeCenters();
     void fituneCenter();
@@ -54,6 +45,8 @@ class SLIC{
     
     void showSLICResult();
     void showSLICResult2();
+
+    void clear();
 
 
 
