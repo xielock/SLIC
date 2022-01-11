@@ -1,5 +1,12 @@
+//input parameters:
+//imageLAB:    the source image in Lab color space
+//DisMask:       it save the shortest distance to the nearest center
+//labelMask:   it save every pixel's label  
+//centers:       clustering center
+//len:         the super pixls will be initialize to len*len
+//m:           a parameter witch adjust the weights of the spacial and color space distance 
 //
-//created by Mr. Peng. 2021\08\31
+//output:
 //
 
 
@@ -21,15 +28,6 @@ struct center
 };
 
 
-//input parameters:
-//imageLAB:    the source image in Lab color space
-//DisMask:       it save the shortest distance to the nearest center
-//labelMask:   it save every pixel's label  
-//centers:       clustering center
-//len:         the super pixls will be initialize to len*len
-//m:           a parameter witch adjust the weights of the spacial and color space distance 
-//
-//output:
 
 int clustering(const cv::Mat &imageLAB, cv::Mat &DisMask, cv::Mat &labelMask,
 	std::vector<center> &centers, int len, int m)
@@ -40,9 +38,6 @@ int clustering(const cv::Mat &imageLAB, cv::Mat &DisMask, cv::Mat &labelMask,
 		return -1;
 	}
 
-	double *disPtr = NULL;//disMask type: 64FC1
-	double *labelPtr = NULL;//labelMask type: 64FC1
-	const uchar *imgPtr = NULL;//imageLAB type: 8UC3
 
 	//disc = std::sqrt(pow(L - cL, 2)+pow(A - cA, 2)+pow(B - cB,2))
 	//diss = std::sqrt(pow(x-cx,2) + pow(y-cy,2));
@@ -90,14 +85,6 @@ int clustering(const cv::Mat &imageLAB, cv::Mat &DisMask, cv::Mat &labelMask,
 	return 0;
 }
 
-
-//input parameters:
-//imageLAB:    the source image in Lab color space
-//labelMask:    it save every pixel's label
-//centers:       clustering center
-//len:         the super pixls will be initialize to len*len
-//
-//output:
 
 int updateCenter(cv::Mat &imageLAB, cv::Mat &labelMask, std::vector<center> &centers, int len)
 {
@@ -222,7 +209,6 @@ int showSLICResult2(const cv::Mat &image, cv::Mat &labelMask, std::vector<center
 int initilizeCenters(cv::Mat &imageLAB, std::vector<center> &centers, int len)
 {
 
-		uchar *ptr = NULL;
 		center cent;
 		int num = 0;
 		for (int i = 0; i < imageLAB.rows; i += len)
