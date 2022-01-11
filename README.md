@@ -1,0 +1,2 @@
+# SLIC
+###inplementation of SLIC
