@@ -3,7 +3,7 @@
  * @Author: xielock
  * @Date: 2022-01-11 18:42:13
  * @LastEditors: xie
- * @LastEditTime: 2022-01-11 20:31:21
+ * @LastEditTime: 2022-01-12 11:02:48
  */
 #include<slic.hpp>
 
@@ -18,6 +18,19 @@ void SLIC::SLIC_demo(const std::string & imagePath, cv:: Mat& labelMask, int len
     this->m = m;
 	srcImage = imread(imagePath);
 
+
+	SLIC_Init();
+	//showSLICResult();
+	//showSLICResult2();
+
+}
+void SLIC::SLIC_demo(const Mat & image, cv:: Mat& labelMask, int len,  int m)
+{
+    this->imagePath = imagePath;
+    this->labelMask = labelMask;
+    this->len = len;
+    this->m = m;
+	srcImage = image;
 
 	SLIC_Init();
 	//showSLICResult();

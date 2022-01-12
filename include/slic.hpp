@@ -3,7 +3,7 @@
  * @Author: xielock
  * @Date: 2022-01-11 16:33:22
  * @LastEditors: xie
- * @LastEditTime: 2022-01-11 20:25:33
+ * @LastEditTime: 2022-01-12 11:03:25
  */
 #include<iostream>
 #include "opencv2/opencv.hpp"
@@ -37,6 +37,7 @@ class SLIC{
     SLIC(){}
     ~SLIC(){}
     void SLIC_demo(const std::string & imagePath, cv:: Mat& labelMask, int len,  int m);
+    void SLIC_demo(const cv::Mat & image, cv:: Mat& labelMask, int len,  int m);
     int  SLIC_Init();
     void initilizeCenters();
     void fituneCenter();
